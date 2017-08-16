@@ -1,28 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
+import { Layout } from 'antd';
 
 import MainMenu from 'ui/components/MainMenu';
 import Footer from 'ui/components/Footer';
 import GlobalLoader from 'ui/components/GlobalLoader';
 import Routes from 'ui/layout/Routes';
 
-const Body = styled.div`
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-`;
-
-const Content = styled.div`flex: 1;`;
-
 const App = props =>
-  (<Body>
+  (<Layout>
     <MainMenu />
-    <Content>
+    <Layout.Content>
       {props.isRehydrated ? <Routes /> : <GlobalLoader />}
-    </Content>
+    </Layout.Content>
     <Footer />
-  </Body>);
+  </Layout>);
 
 const mapStateToProps = state => ({
   ...state.ui,
